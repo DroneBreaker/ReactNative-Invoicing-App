@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Center, Text, Heading, VStack, HStack, Button } from 'native-base'
 
-export function HomeScreen() {
+export function HomeScreen({ navigation }) {
   return (
     <Center>  
       <Box safeArea p="2" py="24">
@@ -16,7 +16,7 @@ export function HomeScreen() {
             <Text mb={4}>Want to create an invoice?</Text>
 
             <HStack space={3}>
-              <Button colorScheme={'green'} >Make an invoice</Button>
+              <Button colorScheme={'green'} onPress={() => navigation.navigate('Invoice')}>Make an invoice</Button>
               <Button colorScheme={'green'}>Submit Monthly invoice</Button>
             </HStack>
           </VStack>

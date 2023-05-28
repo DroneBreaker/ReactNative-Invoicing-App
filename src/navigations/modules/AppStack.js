@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 const AppStack = () => {
     return (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Invoice">
             {StackRoutes.map(({ name, component, options }) => {
                 return <Stack.Screen key={name} name={name} component={component} options={options} />;
             })}
