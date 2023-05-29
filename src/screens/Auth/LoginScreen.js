@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Heading, VStack, FormControl, Input, Link, Button, HStack, Text, Box } from 'native-base'
+import { Center, Heading, VStack, FormControl, Input, Link, Button, HStack, Text, Box, Image } from 'native-base'
 import { useState } from 'react';
 
 export function LoginScreen({navigation}) {
@@ -28,8 +28,10 @@ export function LoginScreen({navigation}) {
     }
 
 
-    return <Center w="100%">
-        <Box safeArea p="2" py="32" w="90%" maxW="290">
+    return <Center h={'100%'} bg={'amber.400'} safeArea p="2" py="12" w="100%">
+        <Image mb={6} h={24} w={24} source={ require('../../../assets/initiate.png')} alt='Logo' />
+
+        <Box w="90%" maxW="290">
           <Heading style={{}} size="2xl" fontWeight="600" color="coolGray.800" _dark={{
           color: "warmGray.50"
         }}>
@@ -44,13 +46,13 @@ export function LoginScreen({navigation}) {
           <VStack space={3} mt="5">
             <FormControl>
               <FormControl.Label>TIN Number</FormControl.Label>
-              <Input value={tin} onChangeText={(tin) => setTIN(tin)} onChange={() => setTINError('')}/>
+              <Input borderColor={'white'} value={tin} onChangeText={(tin) => setTIN(tin)} onChange={() => setTINError('')}/>
               <Text color={'red.600'}>{tinError}</Text>
             </FormControl>
 
             <FormControl>
               <FormControl.Label>OTP Key</FormControl.Label>
-              <Input value={otp} type="password" onChangeText={(otp) => setOTP(otp)} onChange={() => setOTPError('')} />
+              <Input borderColor={'white'} value={otp} type="password" onChangeText={(otp) => setOTP(otp)} onChange={() => setOTPError('')} />
               <Text color={'red.600'}>{otpError}</Text>
               <Link _text={{
               fontSize: "xs",
@@ -60,9 +62,11 @@ export function LoginScreen({navigation}) {
                 Forget Password?
               </Link>
             </FormControl>
+
             <Button mt="2" colorScheme="indigo" onPress={signin}>
               Sign in
             </Button>
+
             <HStack mt="6" justifyContent="center">
               <Text fontSize="sm" color="coolGray.600" _dark={{
               color: "warmGray.200"

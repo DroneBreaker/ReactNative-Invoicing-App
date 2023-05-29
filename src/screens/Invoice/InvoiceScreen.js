@@ -1,5 +1,7 @@
-import { Box, Button, Center, FormControl, HStack, Heading, Image, Input, ScrollView, Text, TextField, VStack } from 'native-base'
+import { Box, Button, Center, FormControl, HStack, 
+    Heading, Image, Input, ScrollView, Text, TextField, VStack } from 'native-base'
 import React, { useState } from 'react'
+// import '../../../assets/initiate'
 
 export function InvoiceScreen({ navigation }) {
     const [ receivedFrom, setReceivedFrom ] = useState('');
@@ -12,14 +14,15 @@ export function InvoiceScreen({ navigation }) {
     }
 
   return (
-    <ScrollView h={'100%'}>
-        <Box>
-            {/* <Image/> */}
-            <Text>Hello VAt</Text>
+    <ScrollView safeArea bg={'amber.400'}>
+        {/*  h={'1%'} */}
+        <Box p="2" py="6" flexDirection={'row'}>
+            <Image h={24} w={24} source={ require('../../../assets/coat-of-arms.png')} alt='Logo' />
+            <Text size={'xl'} fontWeight={'bold'} mx={20} my={8}>Hello VAt</Text>
         </Box>
 
-        <Center w={'100%'} p="2" py="24">
-            <Heading>Create an Invoice</Heading>
+        <Center>
+            <Heading>Create an Invoices</Heading>
 
             <Box w={'95%'} maxW="390" >    
                 <VStack>
@@ -133,7 +136,7 @@ export function InvoiceScreen({ navigation }) {
                     </Box>
                 </VStack>
                 
-                <Button colorScheme={'yellow'} onPress={handleSubmit}>Submit</Button>
+                <Button colorScheme={'green'} onPress={handleSubmit}>Submit</Button>
             </Box>
         </Center>
     </ScrollView>
