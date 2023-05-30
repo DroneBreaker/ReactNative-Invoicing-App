@@ -14,15 +14,15 @@ export function InvoiceScreen({ navigation }) {
     }
 
   return (
-    <ScrollView safeArea bg={'amber.400'}>
+    <ScrollView overflow={'hidden'} bg={'amber.400'}>
         {/*  h={'1%'} */}
-        <Box p="2" py="6" flexDirection={'row'}>
+        <Box h={'0.4%'} m="2" my="8" flexDirection={'row'}>
             <Image h={24} w={24} source={ require('../../../assets/coat-of-arms.png')} alt='Logo' />
-            <Text size={'xl'} fontWeight={'bold'} mx={20} my={8}>Hello VAt</Text>
+            {/* <Text size={'xl'} fontWeight={'bold'} mx={20} mt={6}>Hello VAt</Text> */}
         </Box>
 
         <Center>
-            <Heading>Create an Invoices</Heading>
+            <Heading mb={4}>Create an Invoices</Heading>
 
             <Box w={'95%'} maxW="390" >    
                 <VStack>
@@ -41,47 +41,47 @@ export function InvoiceScreen({ navigation }) {
                         <Input value={onBehalf} onChangeText={(onBehalf) => setOnBehalf(onBehalf)} onChange={() => setOnBehalf('')}/>
                     </FormControl>
 
-                    <Box h={'53%'} w={'100%'} flexDirection={'row'} justifyContent={'space-between'}>
+                    <Box h={'51%'} w={'100%'} flexDirection={'row'} justifyContent={'space-between'}>
                         {/* bg={'blue.700'} */}
                         <VStack w={'60%'}>
                             <Text>ITEM</Text>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Accommodation</FormControl.Label>
                                 <TextField mx={1} w={'45%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Food</FormControl.Label>
                                 <TextField isRequired mx={1} w={'80d%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Drink</FormControl.Label>
                                 <TextField mx={1} w={'80%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Others(Specify)</FormControl.Label>
                                 <TextField mx={1} w={'47%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Sub Total</FormControl.Label>
                                 <TextField mx={1} w={'65%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>VAT (12.5%)</FormControl.Label>
                                 <TextField mx={1} w={'55%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>NHIL (2.5%)</FormControl.Label>
                                 <TextField mx={1} w={'55%'}/>
                             </Box>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>VAT + NHIL</FormControl.Label>
                                 <TextField mx={1} w={'57%'}/>
                             </Box>
@@ -102,7 +102,7 @@ export function InvoiceScreen({ navigation }) {
                             <TextField keyboardType='number-pad'/>
                             <TextField keyboardType='number-pad'  mb={10}/>
 
-                            <Box flexDirection={'row'} mb={2}>
+                            <Box flexDirection={'row'}>
                                 <FormControl.Label>Signature</FormControl.Label>
                                 <TextField mx={1} w={'40%'}/>
                             </Box>
@@ -115,22 +115,22 @@ export function InvoiceScreen({ navigation }) {
                         </Box> */}
                         {/* <Text>ITEM</Text>
                         <Text>AMOUNT</Text> */}
-                    <Box flexDirection={'row'} mb={2}>
+                    <Box flexDirection={'row'}>
                         <FormControl.Label>Supplier</FormControl.Label>
                         <TextField mx={1} w={'40%'}/>
                     </Box>
 
-                    <Box flexDirection={'row'} mb={2}>
+                    <Box flexDirection={'row'}>
                         <FormControl.Label>TIN</FormControl.Label>
                         <TextField mx={8} w={'40%'}/>
                     </Box>
 
-                    <Box flexDirection={'row'} mb={2}>
+                    <Box flexDirection={'row'}>
                         <FormControl.Label>Designation</FormControl.Label>
                         <TextField mx={1} w={'32%'}/>
                     </Box>
 
-                    <Box flexDirection={'row'} mb={2}>
+                    <Box flexDirection={'row'}>
                         <FormControl.Label>Date</FormControl.Label>
                         <TextField borderColor={'white'} keyboardType='numeric' mx={6} w={'39%'}/>
                     </Box>
