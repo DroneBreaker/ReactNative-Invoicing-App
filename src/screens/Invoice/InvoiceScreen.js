@@ -132,7 +132,7 @@ export function InvoiceScreen({ navigation }) {
 
                     <Box flexDirection={'row'} mb={2}>
                         <FormControl.Label>Date</FormControl.Label>
-                        <TextField keyboardType='numeric' mx={6} w={'39%'}/>
+                        <TextField borderColor={'white'} keyboardType='numeric' mx={6} w={'39%'}/>
                     </Box>
                 </VStack>
                 
