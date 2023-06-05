@@ -1,30 +1,45 @@
 import { Box, Button, Center, FormControl, HStack, 
-    Heading, Image, Input, ScrollView, Text, TextField, VStack } from 'native-base'
+    Heading, Image, Input, Modal, ScrollView, Text, TextField, VStack } from 'native-base'
 import React, { useState } from 'react'
-// import '../../../assets/initiate'
+import { TextInput } from 'react-native';
+import DatePicker from 'react-native-datepicker';
 
 export function InvoiceScreen({ navigation }) {
     const [ receivedFrom, setReceivedFrom ] = useState('');
     const [ sum, setSum ] = useState('');
     const [ onBehalf, setOnBehalf ] = useState('');
+    const [ item, setItem ] = useState('');
+    const [ amount, setAmount ] = useState('');
+    const [date, setDate] = useState(new Date());
+    const [modalVisible, setModalVisible] = React.useState(false);
+    const initialRef = React.useRef(null);
+    const finalRef = React.useRef(null);
 
     const handleSubmit = () => {
         alert('Done processing')
         navigation.navigate('Home');
     }
 
+    const handleItem = () => {
+        setModalVisible(false);
+        alert('Added item')
+    }
+
   return (
-    <ScrollView overflow={'hidden'} bg={'amber.400'}>
-        {/*  h={'1%'} */}
-        <Box h={'0.4%'} m="2" my="8" flexDirection={'row'}>
-            <Image h={24} w={24} source={ require('../../../assets/coat-of-arms.png')} alt='Logo' />
-            {/* <Text size={'xl'} fontWeight={'bold'} mx={20} mt={6}>Hello VAt</Text> */}
-        </Box>
+    // bg={'gray.600'}
+    <Box h={'100%'}>
+        <ScrollView>
+            {/*  h={'1%'} */}
+            <Box mx={4} h={'9%'} flexDirection={'row'}>
+                <Image h={24} w={24} my="8" source={ require('../../../assets/coat-of-arms.png')} alt='Logo' />
+                <Text size={'xl'} fontWeight={'bold'} mx={20} mt={6}>Hello VAt</Text>
+            </Box>
 
-        <Center>
-            <Heading mb={4}>Create an Invoices</Heading>
+            <Center>
+                <Heading mb={4}>Create An Invoice</Heading>
+            </Center>  
 
-            <Box w={'95%'} maxW="390" >    
+            <Box mx={4} w={'92%'} maxW="450" >    
                 <VStack>
                     <FormControl>
                         <FormControl.Label>Received From</FormControl.Label>
@@ -41,104 +56,138 @@ export function InvoiceScreen({ navigation }) {
                         <Input value={onBehalf} onChangeText={(onBehalf) => setOnBehalf(onBehalf)} onChange={() => setOnBehalf('')}/>
                     </FormControl>
 
-                    <Box h={'51%'} w={'100%'} flexDirection={'row'} justifyContent={'space-between'}>
+                    <Box h={'35%'} w={'100%'} flexDirection={'column'} mb={8}>
                         {/* bg={'blue.700'} */}
-                        <VStack w={'60%'}>
-                            <Text>ITEM</Text>
+                        <VStack h={'100%'}>
+                            <HStack justifyContent={'betwween'}>
+                                <Box w={'50%'} flexWrap={'wrap'}>
+                                    <Text size={'lg'} fontWeight={'bold'}>ITEM</Text>
+                                </Box>
 
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Accommodation</FormControl.Label>
-                                <TextField mx={1} w={'45%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Food</FormControl.Label>
-                                <TextField isRequired mx={1} w={'80d%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Drink</FormControl.Label>
-                                <TextField mx={1} w={'80%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Others(Specify)</FormControl.Label>
-                                <TextField mx={1} w={'47%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Sub Total</FormControl.Label>
-                                <TextField mx={1} w={'65%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>VAT (12.5%)</FormControl.Label>
-                                <TextField mx={1} w={'55%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>NHIL (2.5%)</FormControl.Label>
-                                <TextField mx={1} w={'55%'}/>
-                            </Box>
-
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>VAT + NHIL</FormControl.Label>
-                                <TextField mx={1} w={'57%'}/>
-                            </Box>
-
-                            <Text mx={16} size={'2xl'} fontWeight={"bold"}>GRAND TOTAL</Text>
+                                <Box w={'50%'} flexWrap={'wrap'}>
+                                    <Text mx={8} size={'lg'} fontWeight={'bold'}>AMOUNT</Text>
+                                </Box>
+                            </HStack>
                         </VStack>
 
-                        {/*  bg={'red.700'} */}
-                        <VStack w={'35%'}> 
-                            <Text mx={6}>AMOUNT</Text>
-                            <TextField keyboardType='number-pad' type='text' value='acommodation' mb={2}/>
-                            <TextField keyboardType='number-pad' value='food' mb={2}/>
-                            <TextField keyboardType='number-pad' value='drink' mb={2}/>
-                            <TextField keyboardType='number-pad' mb={2}/>
-                            <TextField keyboardType='number-pad' mb={2}/>
-                            <TextField keyboardType='number-pad' mb={2}/>
-                            <TextField keyboardType='number-pad' mb={2}/>
-                            <TextField keyboardType='number-pad'/>
-                            <TextField keyboardType='number-pad'  mb={10}/>
+                        <Heading size={'md'} fontWeight={"bold"}>GRAND TOTAL</Heading>
+                    </Box>
 
-                            <Box flexDirection={'row'}>
-                                <FormControl.Label>Signature</FormControl.Label>
-                                <TextField mx={1} w={'40%'}/>
-                            </Box>
-                        </VStack>
+                    <Box flexDirection={'row'} mt={4} justifyContent={'space-between'}>
+                        <FormControl.Label>Supplier</FormControl.Label>
+                        <TextField mx={4} w={'40%'}/>
+                    </Box>
+
+                    <Box flexDirection={'row'} justifyContent={'space-between'}>
+                        <FormControl.Label>TIN</FormControl.Label>
+                        <TextField mx={4} w={'40%'}/>
                     </Box>
                     
 
-                        {/* <Box mb={2}>
-                            <FormControl.Label>AMOUNT</FormControl.Label>
-                        </Box> */}
-                        {/* <Text>ITEM</Text>
-                        <Text>AMOUNT</Text> */}
-                    <Box flexDirection={'row'}>
-                        <FormControl.Label>Supplier</FormControl.Label>
-                        <TextField mx={1} w={'40%'}/>
-                    </Box>
-
-                    <Box flexDirection={'row'}>
-                        <FormControl.Label>TIN</FormControl.Label>
-                        <TextField mx={8} w={'40%'}/>
-                    </Box>
-
-                    <Box flexDirection={'row'}>
+                    <Box flexDirection={'row'} justifyContent={'space-between'}>
                         <FormControl.Label>Designation</FormControl.Label>
-                        <TextField mx={1} w={'32%'}/>
+                        <TextField mr={4} w={'40%'}/>
                     </Box>
 
-                    <Box flexDirection={'row'}>
+                    <Box flexDirection={'row'} justifyContent={'space-between'} mb={4}>
                         <FormControl.Label>Date</FormControl.Label>
-                        <TextField borderColor={'white'} keyboardType='numeric' mx={6} w={'39%'}/>
+                        {/* <Input borderColor={'white'} type='date' placeholder={"22-07-2023"} value={date} mx={4} w={'40%'} onChange={(date) => setDate(date)}/> */}
+
+                        <DatePicker
+                        // style={styles.datePickerStyle}
+                        date={date}
+                        mode="date"
+                        placeholder="select date"
+                        format="DD/MM/YYYY"
+                        minDate="01-01-1900"
+                        maxDate="01-01-2000"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                            position: 'absolute',
+                            right: -5,
+                            top: 4,
+                            marginLeft: 0,
+                            },
+
+                            dateInput: {
+                            borderColor : "gray",
+                            alignItems: "flex-start",
+                            borderWidth: 0,
+                            borderBottomWidth: 1,
+                            },
+
+                            placeholderText: {
+                            fontSize: 17,
+                            color: "gray"
+                            },
+                            dateText: {
+                            fontSize: 17,
+                            }
+                        }}
+                        onDateChange={(date) => {
+                            setDate(date);
+                        }}
+                        />
                     </Box>
+
+                    <Center mr={8}>
+                        <HStack space={'10'} justifyContent={'space-between'}>
+                            <Modal mt={12} isOpen={modalVisible} avoidKeyboard onClose={() => setModalVisible(false)}
+                                justifyContent={'middle'} initialFocusRef={initialRef} finalFocusRef={finalRef}>
+                                <Modal.Content>
+                                    <Modal.CloseButton />
+
+                                    <Modal.Header>Add an Item</Modal.Header>
+
+                                    <Modal.Body>
+                                        <FormControl>
+                                            <FormControl.Label>Item Name</FormControl.Label>
+                                            <Input ref={initialRef} />
+                                        </FormControl>
+
+                                        <FormControl mt="3">
+                                            <FormControl.Label>Amount</FormControl.Label>
+                                            <Input keyboardType='decimal-pad'/>
+                                        </FormControl>
+
+                                        <FormControl mt="3">
+                                            <FormControl.Label>Quantity</FormControl.Label>
+                                            <Input keyboardType='numeric' type='number-pad' />
+                                        </FormControl>
+
+                                        <FormControl mt="3">
+                                            <FormControl.Label>Discount</FormControl.Label>
+                                            <Input keyboardType='decimal-pad' type='number-pad' />
+                                        </FormControl>
+                                    </Modal.Body>
+
+                                    <Modal.Footer>
+                                        <Button.Group space={2}>
+                                            <Button variant="ghost" colorScheme="blueGray" onPress={() => {
+                                            setModalVisible(false);
+                                            }}>
+                                                Cancel
+                                            </Button>
+
+                                            <Button onPress={
+                                                handleItem
+                                            }>
+                                                Add
+                                            </Button>
+                                        </Button.Group>
+                                    </Modal.Footer>
+                                </Modal.Content>
+                            </Modal>
+
+                            <Button colorScheme={'green'} onPress={() => { setModalVisible(!modalVisible)}}>Add Item</Button>
+                            <Button colorScheme={'green'} onPress={handleSubmit}>Submit</Button>
+                        </HStack>
+                    </Center>
                 </VStack>
-                
-                <Button colorScheme={'green'} onPress={handleSubmit}>Submit</Button>
             </Box>
-        </Center>
-    </ScrollView>
+        </ScrollView>
+    </Box>
   )
 }

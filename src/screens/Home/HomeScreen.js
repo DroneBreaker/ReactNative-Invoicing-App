@@ -3,7 +3,7 @@ import { Box, Center, Text, Heading, VStack, HStack, Button } from 'native-base'
 
 export function HomeScreen({ navigation }) {
   return (
-    <Center h={'100%'} bg={'amber.400'}>  
+    <Center h={'100%'} bg={'#3EB489'}>  
       <Box safeArea p="2" py="24">
           <Heading italic mb={2} size="2xl" fontWeight="600" color="coolGray.800" _dark={{
               color: "warmGray.50"

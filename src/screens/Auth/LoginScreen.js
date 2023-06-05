@@ -5,11 +5,11 @@ import { useState } from 'react';
 export function LoginScreen({navigation}) {
     const [tin, setTIN ] = useState('')
     const [tinError, setTINError] = useState('')
-    const [otp, setOTP ] = useState('')
-    const [otpError, setOTPError] = useState('')
+    const [password, setPassword ] = useState('')
+    const [passwordError, setPasswordError] = useState('')
     
     const signin = () => {
-        if(tin === 'DroneBreaker001' && otp === 'drone') {
+        if(tin === 'DroneBreaker001' && password === 'drone') {
             navigation.navigate('Home')
         }
         if(tin !== "") {
@@ -19,11 +19,11 @@ export function LoginScreen({navigation}) {
             setTINError('TIN number is required')
         }
 
-        if(otp !== "") {
-            alert(otp)
-            setOTPError('')
+        if(password !== "") {
+            alert(password)
+            setPasswordError('')
         } else {
-            setOTPError('Your OTP is required')
+            setPasswordError('Your Password is required')
         }
     }
 
@@ -51,9 +51,9 @@ export function LoginScreen({navigation}) {
             </FormControl>
 
             <FormControl>
-              <FormControl.Label>OTP Key</FormControl.Label>
-              <Input borderColor={'white'} value={otp} type="password" onChangeText={(otp) => setOTP(otp)} onChange={() => setOTPError('')} />
-              <Text color={'red.600'}>{otpError}</Text>
+              <FormControl.Label>Password</FormControl.Label>
+              <Input borderColor={'white'} value={password} type="password" onChangeText={(password) => setPassword(password)} onChange={() => setPasswordError('')} />
+              <Text color={'red.600'}>{passwordError}</Text>
               <Link _text={{
               fontSize: "xs",
               fontWeight: "500",
